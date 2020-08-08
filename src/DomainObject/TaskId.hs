@@ -1,7 +1,7 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE DerivingStrategies #-}
 
-module DomainObject.Task.TaskId (TaskId (..)) where
+module DomainObject.TaskId (TaskId (..)) where
 
 import Data.Text
 import GHC.Exts (IsString)

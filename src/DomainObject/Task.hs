@@ -1,9 +1,10 @@
 module DomainObject.Task where
 
-import DomainObject.Task.TaskId (TaskId)
-import DomainObject.SourceCode (SourceCode)
+import DomainObject.Task.IOExample (IOExample)
+import DomainObject.TaskAnswer.SourceCode (SourceCode)
+import DomainObject.TaskId (TaskId)
 
 data Task = Task
   { id :: TaskId,
-    sourceCode :: SourceCode
+    ioExample :: IOExample
   }
