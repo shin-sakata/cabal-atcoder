@@ -1,6 +1,6 @@
 module DomainObject.Task.IOExample where
 
-import RIO.Text (Text)
+import Essential
 
 data IOExample = IOExample
   { input :: Text,

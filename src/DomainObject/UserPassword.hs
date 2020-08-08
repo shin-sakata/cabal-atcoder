@@ -1,5 +1,5 @@
 module DomainObject.UserPassword where
 
-import RIO.Text (Text)
+import Essential
 
 newtype UserPassword = UserPassword Text

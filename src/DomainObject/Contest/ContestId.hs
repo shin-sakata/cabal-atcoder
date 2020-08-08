@@ -3,8 +3,8 @@
 
 module DomainObject.Contest.ContestId (ContestId (..)) where
 
-import RIO.Text (Text)
 import GHC.Exts (IsString)
+import Essential
 
 newtype ContestId = ContestId Text
   deriving newtype (Show, Eq, IsString)

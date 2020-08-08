@@ -3,7 +3,7 @@
 
 module DomainObject.UserName where
 
-import RIO.Text (Text)
+import Essential
 import Data.String (IsString)
 
 newtype UserName = UserName Text

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0a1540555a73f7628211be927127c3e006e92341800344e9466830dfbbb9e1c4
+-- hash: 50d3774fdb455be746d7b618c137df8b9d2a71f1f50f8379793450591b9b4870
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -37,6 +37,7 @@ library
       DomainObject.TaskId
       DomainObject.UserName
       DomainObject.UserPassword
+      Essential
       InterfaceAdapter.Class.AtCoder
       InterfaceAdapter.Class.SessionManager
       Usecase.CreateContest
@@ -48,6 +49,7 @@ library
       Paths_cabal_atcoder
   hs-source-dirs:
       src
+  default-extensions: NoImplicitPrelude
   build-depends:
       base >=4.7 && <5
     , http-client
@@ -62,6 +64,7 @@ executable cabal-atcoder-exe
       Paths_cabal_atcoder
   hs-source-dirs:
       app
+  default-extensions: NoImplicitPrelude
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -79,6 +82,7 @@ test-suite cabal-atcoder-test
       Paths_cabal_atcoder
   hs-source-dirs:
       test
+  default-extensions: NoImplicitPrelude
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5

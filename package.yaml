@@ -26,6 +26,9 @@ dependencies:
 - safe-exceptions
 - http-client
 
+default-extensions:
+- NoImplicitPrelude
+
 library:
   source-dirs: src
 

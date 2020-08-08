@@ -1,5 +1,7 @@
 module DomainObject.Status where
 
+import Essential
+
 data Status
   = AC
   | WJ
