@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6314b4471c3d6d53ef3f9931232b288d739ac59c8e4e817b954f5aabddae6328
+-- hash: 0de7711aa84354e58f3fc8794f18e1cc0564302903e7c5bccf16fa51c335fa77
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -27,8 +27,14 @@ source-repository head
 
 library
   exposed-modules:
+      DomainObject.Contest
+      DomainObject.Contest.ContestId
+      DomainObject.Task
+      DomainObject.Task.TaskId
       DomainObject.UserName
       DomainObject.UserPassword
+      Usecase.CreateContest
+      Usecase.Imports
       Usecase.Login
   other-modules:
       Paths_cabal_atcoder
