@@ -5,4 +5,4 @@ import Usecase.Imports
 import DomainObject.UserPassword (UserPassword (..))
 
 login :: (MonadIO m, MonadThrow m) => UserName -> UserPassword -> m ()
-login userName userPassword = undefined
+login userName userPassword = error "TODO impl"

@@ -4,4 +4,4 @@ import DomainObject.Contest (Contest, ContestId)
 import Usecase.Imports
 
 createContest :: (MonadIO m, MonadThrow m) => ContestId -> m Contest
-createContest contestId = undefined
+createContest contestId = error "TODO impl"

@@ -1,8 +1,9 @@
-module DomainObject.Task (Task (..), TaskId (..)) where
+module DomainObject.Task where
 
-import Data.Text (Text)
-import DomainObject.Task.TaskId (TaskId (..))
+import DomainObject.Task.TaskId (TaskId)
+import DomainObject.SourceCode (SourceCode)
 
 data Task = Task
-  { id :: TaskId
+  { id :: TaskId,
+    sourceCode :: SourceCode
   }
