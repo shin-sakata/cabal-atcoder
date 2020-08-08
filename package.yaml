@@ -24,6 +24,7 @@ dependencies:
 - text
 - mtl
 - safe-exceptions
+- http-client
 
 library:
   source-dirs: src

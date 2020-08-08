@@ -1,8 +1,7 @@
-module Usecase.SubmitTask (submitTask) where
+module Usecase.SubmitTaskAnswer (submitTask) where
 
-import DomainObject.Status (Status)
 import DomainObject.TaskAnswer (TaskAnswer)
 import Usecase.Imports
 
-submitTask :: (MonadIO m, MonadThrow m) => TaskAnswer -> m Status
+submitTask :: (MonadIO m, MonadThrow m) => TaskAnswer -> m ()
 submitTask task = error "TODO impl"

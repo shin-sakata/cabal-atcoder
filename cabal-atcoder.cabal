@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c5d1542e80a90350e1f17902a086d0ea22e818f7441d6e623cb132ba477b0dbf
+-- hash: f53ecd857d8f71d645766516f2187f06f228de2c0e435822a91cd4930f9a2f6f
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -37,6 +37,10 @@ library
       DomainObject.TaskId
       DomainObject.UserName
       DomainObject.UserPassword
+      InterfaceAdapter.Class.AtCoder
+      InterfaceAdapter.Class.SessionManager
+      InterfaceAdapter.Impl.FileSession
+      InterfaceAdapter.Impl.ReqAtCoder
       Usecase.CreateContest
       Usecase.Imports
       Usecase.Login
@@ -48,6 +52,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , http-client
     , mtl
     , safe-exceptions
     , text
@@ -63,6 +68,7 @@ executable cabal-atcoder-exe
   build-depends:
       base >=4.7 && <5
     , cabal-atcoder
+    , http-client
     , mtl
     , safe-exceptions
     , text
@@ -79,6 +85,7 @@ test-suite cabal-atcoder-test
   build-depends:
       base >=4.7 && <5
     , cabal-atcoder
+    , http-client
     , mtl
     , safe-exceptions
     , text
