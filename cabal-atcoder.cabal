@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 50d3774fdb455be746d7b618c137df8b9d2a71f1f50f8379793450591b9b4870
+-- hash: 927499c7b3cb78d3c2c3cd1ef89c5fff3c147df1d14246ab82e80b03f2872b9d
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -54,6 +54,7 @@ library
       base >=4.7 && <5
     , http-client
     , mtl
+    , req
     , rio
     , safe-exceptions
   default-language: Haskell2010
@@ -71,6 +72,7 @@ executable cabal-atcoder-exe
     , cabal-atcoder
     , http-client
     , mtl
+    , req
     , rio
     , safe-exceptions
   default-language: Haskell2010
@@ -89,6 +91,7 @@ test-suite cabal-atcoder-test
     , cabal-atcoder
     , http-client
     , mtl
+    , req
     , rio
     , safe-exceptions
   default-language: Haskell2010

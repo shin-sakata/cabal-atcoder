@@ -25,6 +25,7 @@ dependencies:
 - mtl
 - safe-exceptions
 - http-client
+- req
 
 default-extensions:
 - NoImplicitPrelude
