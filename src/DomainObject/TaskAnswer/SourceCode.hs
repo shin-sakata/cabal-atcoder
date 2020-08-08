@@ -3,7 +3,7 @@
 
 module DomainObject.TaskAnswer.SourceCode where
 
-import Data.Text
+import RIO.Text (Text)
 import GHC.Exts (IsString)
 
 newtype SourceCode = SourceCode Text

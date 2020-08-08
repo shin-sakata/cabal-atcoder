@@ -3,7 +3,7 @@
 
 module DomainObject.TaskId (TaskId (..)) where
 
-import Data.Text
+import RIO.Text (Text)
 import GHC.Exts (IsString)
 
 newtype TaskId = TaskId Text

@@ -1,8 +1,8 @@
 module DomainObject.Contest (Contest (..), ContestId (..)) where
 
-import Data.Text (Text)
-import DomainObject.TaskId (TaskId)
 import DomainObject.Contest.ContestId (ContestId (..))
+import DomainObject.TaskId (TaskId)
+import RIO.Text (Text)
 
 data Contest = Contest
   { id :: ContestId,

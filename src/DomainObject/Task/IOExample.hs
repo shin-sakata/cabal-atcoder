@@ -1,6 +1,6 @@
 module DomainObject.Task.IOExample where
 
-import Data.Text
+import RIO.Text (Text)
 
 data IOExample = IOExample
   { input :: Text,
