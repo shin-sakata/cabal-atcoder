@@ -1,6 +1,6 @@
 module Essential (module Expose, maybeToMonadThrow, eitherToMonadThrow) where
 
-import Control.Arrow
+import Control.Arrow ((|||))
 import Control.Exception.Safe as Expose
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.IO.Class as Expose
