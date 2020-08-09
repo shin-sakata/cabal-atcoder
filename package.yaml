@@ -29,6 +29,8 @@ dependencies:
 - extensible
 - extensible-skeleton
 - membership
+- scalpel
+- string-conversions
 
 default-extensions:
 - NoImplicitPrelude
@@ -46,6 +48,7 @@ default-extensions:
 - TypeApplications
 - ExplicitForAll
 - ScopedTypeVariables
+- OverloadedStrings
 
 library:
   source-dirs: src

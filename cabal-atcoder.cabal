@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6093dd6891272408946baa49586d74e31bc1791c9a7d093b7ff32b9e844e5230
+-- hash: 2010669398fe914e16987712ebae047c31bb14e6aeb0633ddf96bd00d50ae26c
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -42,6 +42,8 @@ library
       InterfaceAdapter.Class.IO
       InterfaceAdapter.Class.SessionRepository
       InterfaceAdapter.Impl.AtCoder.Http
+      InterfaceAdapter.Impl.AtCoder.Http.Client
+      InterfaceAdapter.Impl.AtCoder.Http.Scrape
       InterfaceAdapter.Impl.SessionRepository.File
       Usecase.CreateContest
       Usecase.Imports
@@ -53,7 +55,7 @@ library
       Paths_cabal_atcoder
   hs-source-dirs:
       src
-  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
   build-depends:
       base >=4.7 && <5
     , extensible
@@ -64,6 +66,8 @@ library
     , req
     , rio
     , safe-exceptions
+    , scalpel
+    , string-conversions
   default-language: Haskell2010
 
 executable cabal-atcoder-exe
@@ -72,7 +76,7 @@ executable cabal-atcoder-exe
       Paths_cabal_atcoder
   hs-source-dirs:
       app
-  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -85,6 +89,8 @@ executable cabal-atcoder-exe
     , req
     , rio
     , safe-exceptions
+    , scalpel
+    , string-conversions
   default-language: Haskell2010
 
 test-suite cabal-atcoder-test
@@ -94,7 +100,7 @@ test-suite cabal-atcoder-test
       Paths_cabal_atcoder
   hs-source-dirs:
       test
-  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -107,4 +113,6 @@ test-suite cabal-atcoder-test
     , req
     , rio
     , safe-exceptions
+    , scalpel
+    , string-conversions
   default-language: Haskell2010
