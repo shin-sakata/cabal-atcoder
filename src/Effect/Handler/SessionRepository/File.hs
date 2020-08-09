@@ -5,6 +5,14 @@ import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (SessionRepository (..))
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 import Essential hiding (lift)
+import System.Directory
+  ( XdgDirectory (XdgCache),
+    createDirectory,
+    doesDirectoryExist,
+    getXdgDirectory,
+  )
+import System.Environment (getEnv)
+import System.FilePath ((</>))
 import Text.Read (readMaybe)
 
 run ::
@@ -25,18 +33,39 @@ run effs = peelEff0 pure interpret effs
       IO.lift $ storeSession session
       k ()
 
-sessionPath :: FilePath
-sessionPath = "session"
-
 removeSession :: IO ()
 removeSession = storeSession mempty
 
 storeSession :: SessionRepository.Session -> IO ()
-storeSession = writeFile sessionPath . show
+storeSession session = do
+  sessionPath <- getSessionPath
+  writeFile sessionPath $ show session
 
 getSession :: IO SessionRepository.Session
 getSession = do
+  sessionPath <- getSessionPath
   sessionUtf8 <- readFile sessionPath
   case readMaybe $ sessionUtf8 of
     Just session -> pure session
     Nothing -> throwString "The session file is corrupted."
+
+getSessionPath :: IO FilePath
+getSessionPath = do
+  let sessionFileName = "session"
+  cacheDir <- getCacheDir
+  pure $ cacheDir </> sessionFileName
+  where
+
+initDir :: FilePath -> IO ()
+initDir dir = do
+  exists <- doesDirectoryExist dir
+  if exists
+    then pure ()
+    else createDirectory dir
+
+getCacheDir :: IO FilePath
+getCacheDir = do
+  cacheDir <- getEnv "CABAL_ATCODER_TEST_CACHE_DIR"
+  if null cacheDir
+    then getXdgDirectory XdgCache "cabal-atcoder"
+    else pure cacheDir

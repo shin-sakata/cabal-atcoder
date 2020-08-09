@@ -33,6 +33,8 @@ dependencies:
 - membership
 - scalpel
 - optparse-applicative
+- directory
+- filepath
 
 default-extensions:
 - ConstraintKinds
@@ -55,7 +57,7 @@ library:
   source-dirs: src
 
 executables:
-  cabal-atcoder-exe:
+  cabal-atcoder:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
