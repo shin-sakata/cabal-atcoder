@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4c24e6f593e5fee1308354e2ada9134afa075fd0c5b8edbf6a77de587e22af30
+-- hash: 033356b11c6d385d1ef652582aade363184dc418aa40dd721e6bd2d87bedff58
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -38,6 +38,7 @@ library
       DomainObject.UserName
       DomainObject.UserPassword
       Essential
+      InterfaceAdapter.Class.AtCoder
       InterfaceAdapter.Class.IO
       InterfaceAdapter.Class.SessionRepository
       InterfaceAdapter.Impl.SessionRepository.File
