@@ -1,6 +1,3 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE DerivingStrategies #-}
-
 module DomainObject.TaskAnswer.SourceCode where
 
 import GHC.Exts (IsString)

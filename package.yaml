@@ -26,9 +26,26 @@ dependencies:
 - safe-exceptions
 - http-client
 - req
+- extensible
+- extensible-skeleton
+- membership
 
 default-extensions:
 - NoImplicitPrelude
+- ConstraintKinds
+- DataKinds
+- ExplicitForAll
+- ExplicitNamespaces
+- FlexibleContexts
+- GADTs
+- PackageImports
+- TypeOperators
+- GeneralizedNewtypeDeriving
+- DerivingStrategies
+- OverloadedLabels
+- TypeApplications
+- ExplicitForAll
+- ScopedTypeVariables
 
 library:
   source-dirs: src

@@ -6,13 +6,9 @@ import Usecase.Imports
 
 login ::
   ( MonadIO m,
-    MonadThrow m,
-    SessionManager m,
-    AtCoder m
+    MonadThrow m
   ) =>
   UserName ->
   UserPassword ->
   m ()
-login userName userPassword = do
-  session <- createSession userName userPassword
-  saveSession session
+login userName userPassword = error "TODO impl"

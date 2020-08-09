@@ -1,6 +1,3 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE DerivingStrategies #-}
-
 module DomainObject.TaskId (TaskId (..)) where
 
 import Essential

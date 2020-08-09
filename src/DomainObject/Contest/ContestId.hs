@@ -1,6 +1,3 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE DerivingStrategies #-}
-
 module DomainObject.Contest.ContestId (ContestId (..)) where
 
 import GHC.Exts (IsString)

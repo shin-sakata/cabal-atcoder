@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 927499c7b3cb78d3c2c3cd1ef89c5fff3c147df1d14246ab82e80b03f2872b9d
+-- hash: cdb6712bf7eb438e2ba62af6481d39d7d9f16a2957bbb008ac13130bd0e6ac00
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -38,8 +38,6 @@ library
       DomainObject.UserName
       DomainObject.UserPassword
       Essential
-      InterfaceAdapter.Class.AtCoder
-      InterfaceAdapter.Class.SessionManager
       Usecase.CreateContest
       Usecase.Imports
       Usecase.Login
@@ -49,10 +47,13 @@ library
       Paths_cabal_atcoder
   hs-source-dirs:
       src
-  default-extensions: NoImplicitPrelude
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
   build-depends:
       base >=4.7 && <5
+    , extensible
+    , extensible-skeleton
     , http-client
+    , membership
     , mtl
     , req
     , rio
@@ -65,12 +66,15 @@ executable cabal-atcoder-exe
       Paths_cabal_atcoder
   hs-source-dirs:
       app
-  default-extensions: NoImplicitPrelude
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , cabal-atcoder
+    , extensible
+    , extensible-skeleton
     , http-client
+    , membership
     , mtl
     , req
     , rio
@@ -84,12 +88,15 @@ test-suite cabal-atcoder-test
       Paths_cabal_atcoder
   hs-source-dirs:
       test
-  default-extensions: NoImplicitPrelude
+  default-extensions: NoImplicitPrelude ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , cabal-atcoder
+    , extensible
+    , extensible-skeleton
     , http-client
+    , membership
     , mtl
     , req
     , rio
