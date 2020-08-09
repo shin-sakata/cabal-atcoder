@@ -1,9 +1,10 @@
 module UserInterface.Cli where
 
+import qualified Data.Text.IO as T
 import Essential
 import Options.Applicative
-import UserInterface.Cli.Login (login)
 import UserInterface.Cli.ClearSession (clearSession)
+import UserInterface.Cli.Login (login)
 
 data Command
   = Login
@@ -41,16 +42,13 @@ parseInfo = parseCommand `withInfo` usage
 usage :: String
 usage = "stack atcoder [--help] [COMMAND]"
 
-execCommand :: RIO SimpleApp ()
+execCommand :: IO ()
 execCommand =
   do
     command <- liftIO $ execParser parseInfo
     run command
-      `catch` ( \(e :: SomeException) ->
-                  logInfo $ display $ (convertString $ displayException e :: Text)
-              )
   where
-    run :: Command -> RIO SimpleApp ()
+    run :: Command -> IO ()
     run cmd = case cmd of
       Login -> login
       ClearSession -> clearSession

@@ -8,8 +8,8 @@ import Essential
 import qualified Effect.Handler.SessionRepository.File as FileSession
 import Usecase.Logout (logout)
 
-clearSession :: RIO SimpleApp ()
-clearSession = liftIO $ runLogout logout
+clearSession :: IO ()
+clearSession = runLogout logout
 
 runLogout :: Eff '[Session.NamedEff, IO.NamedEff] a -> IO a
 runLogout = retractEff . FileSession.run

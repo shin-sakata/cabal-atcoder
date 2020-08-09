@@ -17,11 +17,12 @@ module Effect.Handler.AtCoder.Http.Client
   )
 where
 
+import Control.Monad.State (get, put)
 import Data.Extensible (type (>:))
 import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible.Effect.Default
-import Essential hiding (lift)
 import Effect.Adapter.SessionRepository (Session)
+import Essential hiding (lift)
 import Network.HTTP.Req
   ( GET (GET),
     NoReqBody (NoReqBody),
@@ -37,8 +38,6 @@ import Network.HTTP.Req
     (=:),
   )
 import qualified Network.HTTP.Req as Req
-import RIO.State (get, put)
-import qualified RIO.Text as T
 
 type HttpClient = Eff '[StateDef Session, "IO" >: IO]
 

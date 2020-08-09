@@ -3,9 +3,9 @@ module Effect.Handler.SessionRepository.File (run) where
 import Data.Extensible.Effect
 import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (SessionRepository (..))
-import Essential hiding (lift)
 import qualified Effect.Adapter.SessionRepository as SessionRepository
-import qualified RIO.Text as T
+import Essential hiding (lift)
+import Text.Read (readMaybe)
 
 run ::
   forall effs a.
@@ -32,11 +32,11 @@ removeSession :: IO ()
 removeSession = storeSession mempty
 
 storeSession :: SessionRepository.Session -> IO ()
-storeSession = writeFileUtf8 sessionPath . T.pack . show
+storeSession = writeFile sessionPath . show
 
 getSession :: IO SessionRepository.Session
 getSession = do
-  sessionUtf8 <- readFileUtf8 sessionPath
-  case readMaybe $ T.unpack sessionUtf8 of
+  sessionUtf8 <- readFile sessionPath
+  case readMaybe $ sessionUtf8 of
     Just session -> pure session
     Nothing -> throwString "The session file is corrupted."

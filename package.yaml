@@ -21,7 +21,9 @@ description:         Please see the README on GitHub at <https://github.com/shin
 
 dependencies:
 - base >= 4.7 && < 5
-- rio
+- string-conversions
+- text
+- bytestring
 - mtl
 - safe-exceptions
 - http-client
@@ -30,12 +32,9 @@ dependencies:
 - extensible-skeleton
 - membership
 - scalpel
-- string-conversions
 - optparse-applicative
-- rio-orphans
 
 default-extensions:
-- NoImplicitPrelude
 - ConstraintKinds
 - DataKinds
 - ExplicitForAll

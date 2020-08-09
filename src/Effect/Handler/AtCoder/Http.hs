@@ -1,8 +1,10 @@
 module Effect.Handler.AtCoder.Http where
 
-import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
+import Control.Monad.State (get)
 import Data.Extensible (type (>:))
+import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible.Effect.Default
+import qualified Data.Text as T
 import DomainObject.UserName (UserName (UserName))
 import DomainObject.UserPassword (UserPassword (UserPassword))
 import Effect.Adapter.AtCoder (AtCoder (..))
@@ -24,10 +26,8 @@ import Effect.Handler.AtCoder.Http.Client
   )
 import qualified Effect.Handler.AtCoder.Http.Client as HttpClient
 import Effect.Handler.AtCoder.Http.Scrape (Html (Html))
-import Essential hiding (lift)
 import qualified Effect.Handler.AtCoder.Http.Scrape as Scrape
-import RIO.State (get, put)
-import qualified RIO.Text as T
+import Essential hiding (lift)
 
 run ::
   forall effs a.
