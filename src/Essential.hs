@@ -6,6 +6,7 @@ import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.String.Conversions as Expose (convertString)
 import RIO as Expose hiding (throwString)
 import RIO.Text as Expose (Text)
+import RIO.Orphans as Expose
 
 maybeToMonadThrow :: (MonadThrow m, Exception e) => e -> Maybe a -> m a
 maybeToMonadThrow e = throw e `maybe` return

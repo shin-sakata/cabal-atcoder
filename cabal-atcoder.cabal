@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2010669398fe914e16987712ebae047c31bb14e6aeb0633ddf96bd00d50ae26c
+-- hash: 79fe2a835064919e6237ff1bf74ac43dd3c7d3fed3cfdf9c764b20ed8cabeb5b
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -51,6 +51,9 @@ library
       Usecase.Logout
       Usecase.SubmitTaskAnswer
       Usecase.TestTaskAnswer
+      UserInterface.Cli
+      UserInterface.Cli.ClearSession
+      UserInterface.Cli.Login
   other-modules:
       Paths_cabal_atcoder
   hs-source-dirs:
@@ -63,8 +66,10 @@ library
     , http-client
     , membership
     , mtl
+    , optparse-applicative
     , req
     , rio
+    , rio-orphans
     , safe-exceptions
     , scalpel
     , string-conversions
@@ -86,8 +91,10 @@ executable cabal-atcoder-exe
     , http-client
     , membership
     , mtl
+    , optparse-applicative
     , req
     , rio
+    , rio-orphans
     , safe-exceptions
     , scalpel
     , string-conversions
@@ -110,8 +117,10 @@ test-suite cabal-atcoder-test
     , http-client
     , membership
     , mtl
+    , optparse-applicative
     , req
     , rio
+    , rio-orphans
     , safe-exceptions
     , scalpel
     , string-conversions
