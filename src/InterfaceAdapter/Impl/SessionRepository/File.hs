@@ -1,4 +1,4 @@
-module InterfaceAdapter.Impl.SessionRepository.File where
+module InterfaceAdapter.Impl.SessionRepository.File (run) where
 
 import Data.Extensible.Effect
 import Essential hiding (lift)
