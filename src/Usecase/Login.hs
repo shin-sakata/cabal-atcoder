@@ -2,8 +2,8 @@ module Usecase.Login (login) where
 
 import DomainObject.UserName (UserName)
 import DomainObject.UserPassword (UserPassword)
-import qualified InterfaceAdapter.Class.AtCoder as AtCoder
-import qualified InterfaceAdapter.Class.SessionRepository as SessionRepository
+import qualified Effect.Adapter.AtCoder as AtCoder
+import qualified Effect.Adapter.SessionRepository as SessionRepository
 import Usecase.Imports
 
 login ::

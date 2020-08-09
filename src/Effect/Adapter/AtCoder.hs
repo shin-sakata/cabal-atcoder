@@ -1,4 +1,4 @@
-module InterfaceAdapter.Class.AtCoder
+module Effect.Adapter.AtCoder
   ( AnonEff,
     EffName,
     HasEff,
@@ -14,9 +14,9 @@ import Data.Extensible.Effect
 import Data.Proxy (Proxy (Proxy))
 import DomainObject.UserName (UserName)
 import DomainObject.UserPassword (UserPassword)
+import Effect.Adapter.SessionRepository (Session)
 import Essential hiding (lift)
 import Network.HTTP.Client (CookieJar)
-import InterfaceAdapter.Class.SessionRepository (Session)
 
 data AtCoder a where
   CreateSession :: UserName -> UserPassword -> AtCoder Session

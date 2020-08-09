@@ -1,4 +1,4 @@
-module InterfaceAdapter.Impl.AtCoder.Http.Scrape where
+module Effect.Handler.AtCoder.Http.Scrape where
 
 import Data.Maybe (isJust)
 import Essential

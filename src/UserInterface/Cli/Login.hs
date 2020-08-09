@@ -4,12 +4,12 @@ import Data.Extensible
 import Data.Extensible.Effect
 import DomainObject.UserName (UserName (UserName))
 import DomainObject.UserPassword (UserPassword (UserPassword))
+import qualified Effect.Adapter.AtCoder as AtCoder
+import qualified Effect.Adapter.IO as IO
+import qualified Effect.Handler.AtCoder.Http as HttpAtCoder
+import qualified Effect.Adapter.SessionRepository as Session
 import Essential
-import qualified InterfaceAdapter.Class.AtCoder as AtCoder
-import qualified InterfaceAdapter.Class.IO as IO
-import qualified InterfaceAdapter.Class.SessionRepository as Session
-import qualified InterfaceAdapter.Impl.AtCoder.Http as HttpAtCoder
-import qualified InterfaceAdapter.Impl.SessionRepository.File as FileSession
+import qualified Effect.Handler.SessionRepository.File as FileSession
 import qualified RIO.ByteString as B
 import qualified Usecase.Login as Usecase
 

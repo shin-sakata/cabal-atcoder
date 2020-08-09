@@ -1,10 +1,10 @@
-module InterfaceAdapter.Impl.SessionRepository.File (run) where
+module Effect.Handler.SessionRepository.File (run) where
 
 import Data.Extensible.Effect
+import qualified Effect.Adapter.IO as IO
+import Effect.Adapter.SessionRepository (SessionRepository (..))
 import Essential hiding (lift)
-import qualified InterfaceAdapter.Class.IO as IO
-import InterfaceAdapter.Class.SessionRepository (SessionRepository (..))
-import qualified InterfaceAdapter.Class.SessionRepository as SessionRepository
+import qualified Effect.Adapter.SessionRepository as SessionRepository
 import qualified RIO.Text as T
 
 run ::

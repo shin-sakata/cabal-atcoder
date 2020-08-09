@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 79fe2a835064919e6237ff1bf74ac43dd3c7d3fed3cfdf9c764b20ed8cabeb5b
+-- hash: 1ee62a839541eeffe2c3907c5387a637eb2481752c509f3bee4465737f869af0
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -37,14 +37,14 @@ library
       DomainObject.TaskId
       DomainObject.UserName
       DomainObject.UserPassword
+      Effect.Adapter.AtCoder
+      Effect.Adapter.IO
+      Effect.Adapter.SessionRepository
+      Effect.Handler.AtCoder.Http
+      Effect.Handler.AtCoder.Http.Client
+      Effect.Handler.AtCoder.Http.Scrape
+      Effect.Handler.SessionRepository.File
       Essential
-      InterfaceAdapter.Class.AtCoder
-      InterfaceAdapter.Class.IO
-      InterfaceAdapter.Class.SessionRepository
-      InterfaceAdapter.Impl.AtCoder.Http
-      InterfaceAdapter.Impl.AtCoder.Http.Client
-      InterfaceAdapter.Impl.AtCoder.Http.Scrape
-      InterfaceAdapter.Impl.SessionRepository.File
       Usecase.CreateContest
       Usecase.Imports
       Usecase.Login

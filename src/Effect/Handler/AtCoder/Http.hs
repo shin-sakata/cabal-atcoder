@@ -1,16 +1,15 @@
-module InterfaceAdapter.Impl.AtCoder.Http where
+module Effect.Handler.AtCoder.Http where
 
 import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible (type (>:))
 import Data.Extensible.Effect.Default
 import DomainObject.UserName (UserName (UserName))
 import DomainObject.UserPassword (UserPassword (UserPassword))
-import Essential hiding (lift)
-import InterfaceAdapter.Class.AtCoder (AtCoder (..))
-import qualified InterfaceAdapter.Class.AtCoder as AtCoder
-import qualified InterfaceAdapter.Class.IO as IO
-import InterfaceAdapter.Class.SessionRepository (Session)
-import InterfaceAdapter.Impl.AtCoder.Http.Client
+import Effect.Adapter.AtCoder (AtCoder (..))
+import qualified Effect.Adapter.AtCoder as AtCoder
+import qualified Effect.Adapter.IO as IO
+import Effect.Adapter.SessionRepository (Session)
+import Effect.Handler.AtCoder.Http.Client
   ( GET (GET),
     HttpClient,
     NoReqBody (..),
@@ -23,9 +22,10 @@ import InterfaceAdapter.Impl.AtCoder.Http.Client
     (/:),
     (=:),
   )
-import qualified InterfaceAdapter.Impl.AtCoder.Http.Client as HttpClient
-import InterfaceAdapter.Impl.AtCoder.Http.Scrape (Html (Html))
-import qualified InterfaceAdapter.Impl.AtCoder.Http.Scrape as Scrape
+import qualified Effect.Handler.AtCoder.Http.Client as HttpClient
+import Effect.Handler.AtCoder.Http.Scrape (Html (Html))
+import Essential hiding (lift)
+import qualified Effect.Handler.AtCoder.Http.Scrape as Scrape
 import RIO.State (get, put)
 import qualified RIO.Text as T
 

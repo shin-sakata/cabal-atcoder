@@ -1,4 +1,4 @@
-module InterfaceAdapter.Impl.AtCoder.Http.Client
+module Effect.Handler.AtCoder.Http.Client
   ( reqWithSession,
     runSession,
     HttpClient,
@@ -21,7 +21,7 @@ import Data.Extensible (type (>:))
 import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible.Effect.Default
 import Essential hiding (lift)
-import InterfaceAdapter.Class.SessionRepository (Session)
+import Effect.Adapter.SessionRepository (Session)
 import Network.HTTP.Req
   ( GET (GET),
     NoReqBody (NoReqBody),

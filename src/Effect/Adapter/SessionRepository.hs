@@ -1,4 +1,4 @@
-module InterfaceAdapter.Class.SessionRepository
+module Effect.Adapter.SessionRepository
   ( AnonEff,
     EffName,
     HasEff,

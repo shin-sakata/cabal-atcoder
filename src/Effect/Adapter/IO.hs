@@ -1,4 +1,4 @@
-module InterfaceAdapter.Class.IO
+module Effect.Adapter.IO
   ( AnonEff,
     EffName,
     HasEff,
