@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1965bdc02fcb9faea388410ff80131e1f1006ef3fb505f15e7bde6eece3f2cec
+-- hash: fa6b30a9d015654afe58aa856d89fc4d229b6954f13ff0f61c8544b8a6d0371b
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -59,7 +59,7 @@ library
       Paths_cabal_atcoder
   hs-source-dirs:
       src
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
   build-depends:
       base >=4.7 && <5
     , bytestring
@@ -84,7 +84,7 @@ executable cabal-atcoder
       Paths_cabal_atcoder
   hs-source-dirs:
       app
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -109,10 +109,13 @@ test-suite cabal-atcoder-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Effect.Handler.AtCoder.Pure
+      Effect.Handler.SessionRepository.Pure
+      Usecase.LoginSpec
       Paths_cabal_atcoder
   hs-source-dirs:
       test
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -122,6 +125,7 @@ test-suite cabal-atcoder-test
     , extensible
     , extensible-skeleton
     , filepath
+    , hspec
     , http-client
     , membership
     , mtl

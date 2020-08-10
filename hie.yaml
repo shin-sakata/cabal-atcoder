@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "cabal-atcoder:lib"
+
+    - path: "./app/Main.hs"
+      component: "cabal-atcoder:exe:cabal-atcoder"
+
+    - path: "./app/Paths_cabal_atcoder.hs"
+      component: "cabal-atcoder:exe:cabal-atcoder"
+
+    - path: "./test"
+      component: "cabal-atcoder:test:cabal-atcoder-test"

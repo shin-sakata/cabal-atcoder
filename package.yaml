@@ -52,6 +52,7 @@ default-extensions:
 - ExplicitForAll
 - ScopedTypeVariables
 - OverloadedStrings
+- BlockArguments
 
 library:
   source-dirs: src
@@ -77,3 +78,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - cabal-atcoder
+    - hspec
