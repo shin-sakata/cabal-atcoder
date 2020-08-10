@@ -50,6 +50,26 @@ hasSuccess (Html html) =
     predicates =
       [Scalpel.hasClass "alert-success"]
 
+-- atcoder.jp/contest/{contestId}/tasksからTasksを抽出する
+-- <td class="text-center no-break"><a href="/contests/abc174/tasks/abc174_a">A</a></td>
+extractTasks :: MonadThrow m => Html -> m [Text]
+extractTasks (Html html) =
+  maybeToMonadThrow
+    (NotFound "tasks")
+    (Scalpel.scrapeStringLike html $ Scalpel.texts selector)
+  where
+    selector :: Selector
+    selector =
+      tag @: predicates
+
+    tag :: TagName
+    tag =
+      TagString "td"
+
+    predicates :: [AttributePredicate]
+    predicates =
+      [Scalpel.hasClass "text-center", Scalpel.hasClass "no-break"]
+
 -- Exception
 data ScrapeException
   = NotFound Text

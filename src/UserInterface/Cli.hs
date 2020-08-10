@@ -5,19 +5,19 @@ import Essential
 import Options.Applicative
 import UserInterface.Cli.ClearSession (clearSession)
 import UserInterface.Cli.Login (login)
+import UserInterface.Cli.New (new)
 
 data Command
   = Login
-  | -- | New Text
-    -- | Submit Text
-    ClearSession
+  | New Text
+  | ClearSession
   deriving (Show)
 
 parseLogin :: Parser Command
 parseLogin = pure Login
 
--- parseNew :: Parser Command
--- parseNew = New <$> argument str (metavar "[CONTEST_NAME]")
+parseNew :: Parser Command
+parseNew = New <$> argument str (metavar "[CONTEST_NAME]")
 
 -- parseSubmit :: Parser Command
 -- parseSubmit = Submit <$> argument str (metavar "[TASK_NAME]")
@@ -32,7 +32,7 @@ parseCommand :: Parser Command
 parseCommand =
   subparser $
     command "login" (parseLogin `withInfo` "Login to AtCoder")
-      -- <> command "new" (parseNew `withInfo` "Create a new project for specified contest")
+      <> command "new" (parseNew `withInfo` "Create a new project for specified contest")
       -- <> command "submit" (parseSubmit `withInfo` "Submit solution")
       <> command "clear-session" (parseClearSession `withInfo` "Clear session data (cookie store in HTTP client)")
 
@@ -51,4 +51,5 @@ execCommand =
     run :: Command -> IO ()
     run cmd = case cmd of
       Login -> login
+      New contestId -> new contestId
       ClearSession -> clearSession

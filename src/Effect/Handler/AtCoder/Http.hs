@@ -5,6 +5,9 @@ import Data.Extensible (type (>:))
 import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible.Effect.Default
 import qualified Data.Text as T
+import DomainObject.Contest (Contest (..), ContestId (..))
+import DomainObject.TaskId (TaskId (..))
+import qualified DomainObject.TaskId as TaskId
 import DomainObject.UserName (UserName (UserName))
 import DomainObject.UserPassword (UserPassword (UserPassword))
 import Effect.Adapter.AtCoder (AtCoder (..))
@@ -41,6 +44,9 @@ run initSession effs = peelEff0 pure interpret effs
     interpret (CreateSession userName userPassword) k = do
       session <- IO.lift $ retractEff $ HttpClient.runSession initSession $ createSession userName userPassword
       k session
+    interpret (GetContest contestId) k = do
+      contest <- IO.lift $ retractEff $ HttpClient.runSession initSession $ getContest contestId
+      k contest
 
 -- AtCoder endpoint
 endpoint :: Url 'Https
@@ -76,6 +82,35 @@ createSession (UserName userName) (UserPassword userPassword) = do
   if Scrape.hasSuccess $ Html $ convertString $ HttpClient.responseBody r
     then get
     else liftIO $ throw $ AtCoderException "Username or Password is incorrect."
+
+getContest :: ContestId -> HttpClient Contest
+getContest (ContestId contestId) = do
+  let tasksEndpoint = endpoint /: "contests" /: contestId /: "tasks"
+
+  r <-
+    HttpClient.reqWithSession
+      GET
+      tasksEndpoint
+      NoReqBody
+      bsResponse
+      mempty
+
+  -- 404だった場合は入力が違うためエラー
+  when
+    (HttpClient.responseStatusCode r == 404)
+    (throw $ AtCoderException [st|Contest not found. Contest id: #{contestId}|])
+
+  let tasksDocument = Html $ convertString $ HttpClient.responseBody r
+
+  tasks <- map TaskId.fromText <$> Scrape.extractTasks tasksDocument
+
+  let contest =
+        Contest
+          { id = (ContestId contestId),
+            tasks = tasks
+          }
+
+  pure contest
 
 -- Exception
 data AtCoderException

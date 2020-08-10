@@ -35,6 +35,11 @@ dependencies:
 - optparse-applicative
 - directory
 - filepath
+- heterocephalus
+- blaze-markup
+- template-haskell
+- http-types
+- shakespeare
 
 default-extensions:
 - ConstraintKinds
@@ -53,6 +58,9 @@ default-extensions:
 - ScopedTypeVariables
 - OverloadedStrings
 - BlockArguments
+- RecordWildCards
+- TemplateHaskell
+- QuasiQuotes
 
 library:
   source-dirs: src

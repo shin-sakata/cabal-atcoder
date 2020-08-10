@@ -1,0 +1,13 @@
+cabal-version:       >=1.10
+
+name:                #{ show contestId }
+version:             0.1.0.0
+build-type:          Simple
+
+%{ forall taskId <- tasks }
+executable #{ show taskId }
+  main-is:             #{ show taskId }.hs
+  default-language:    Haskell2010
+  build-depends:       base >=4.13 && <4.14
+
+%{ endforall }

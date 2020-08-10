@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fa6b30a9d015654afe58aa856d89fc4d229b6954f13ff0f61c8544b8a6d0371b
+-- hash: 73058187a02bf4b3304df1007ff8f22a38c6b084580dd47fcc191585c5d56dc6
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -44,6 +44,7 @@ library
       Effect.Handler.AtCoder.Http
       Effect.Handler.AtCoder.Http.Client
       Effect.Handler.AtCoder.Http.Scrape
+      Effect.Handler.Project.File
       Effect.Handler.SessionRepository.File
       Essential
       Usecase.CreateProject
@@ -55,26 +56,32 @@ library
       UserInterface.Cli
       UserInterface.Cli.ClearSession
       UserInterface.Cli.Login
+      UserInterface.Cli.New
   other-modules:
       Paths_cabal_atcoder
   hs-source-dirs:
       src
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
   build-depends:
       base >=4.7 && <5
+    , blaze-markup
     , bytestring
     , directory
     , extensible
     , extensible-skeleton
     , filepath
+    , heterocephalus
     , http-client
+    , http-types
     , membership
     , mtl
     , optparse-applicative
     , req
     , safe-exceptions
     , scalpel
+    , shakespeare
     , string-conversions
+    , template-haskell
     , text
   default-language: Haskell2010
 
@@ -84,24 +91,29 @@ executable cabal-atcoder
       Paths_cabal_atcoder
   hs-source-dirs:
       app
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , blaze-markup
     , bytestring
     , cabal-atcoder
     , directory
     , extensible
     , extensible-skeleton
     , filepath
+    , heterocephalus
     , http-client
+    , http-types
     , membership
     , mtl
     , optparse-applicative
     , req
     , safe-exceptions
     , scalpel
+    , shakespeare
     , string-conversions
+    , template-haskell
     , text
   default-language: Haskell2010
 
@@ -115,24 +127,29 @@ test-suite cabal-atcoder-test
       Paths_cabal_atcoder
   hs-source-dirs:
       test
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , blaze-markup
     , bytestring
     , cabal-atcoder
     , directory
     , extensible
     , extensible-skeleton
     , filepath
+    , heterocephalus
     , hspec
     , http-client
+    , http-types
     , membership
     , mtl
     , optparse-applicative
     , req
     , safe-exceptions
     , scalpel
+    , shakespeare
     , string-conversions
+    , template-haskell
     , text
   default-language: Haskell2010

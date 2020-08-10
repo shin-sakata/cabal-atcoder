@@ -3,4 +3,7 @@ module DomainObject.Contest.ContestId (ContestId (..)) where
 import Essential
 
 newtype ContestId = ContestId Text
-  deriving newtype (Show, Eq)
+  deriving newtype (Eq)
+
+instance Show ContestId where
+  show (ContestId contestId) = convertString contestId

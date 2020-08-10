@@ -6,6 +6,7 @@ module Effect.Adapter.Project
     NamedEff,
     lift,
     createProject,
+    Project (..),
   )
 where
 

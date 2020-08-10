@@ -1,7 +1,13 @@
-module DomainObject.TaskId (TaskId (..)) where
+module DomainObject.TaskId (TaskId (..), fromText) where
 
 import Essential
-import GHC.Exts (IsString)
+import qualified Data.Text as T
 
 newtype TaskId = TaskId Text
-  deriving newtype (Show, Eq, IsString)
+  deriving newtype (Eq)
+
+fromText :: Text -> TaskId
+fromText = TaskId . T.toLower
+
+instance Show TaskId where
+  show (TaskId taskId) = convertString taskId
