@@ -53,6 +53,7 @@ getSessionPath :: IO FilePath
 getSessionPath = do
   let sessionFileName = "session"
   cacheDir <- getCacheDir
+  initDir cacheDir
   pure $ cacheDir </> sessionFileName
   where
 
