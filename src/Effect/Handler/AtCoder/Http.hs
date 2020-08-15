@@ -16,7 +16,6 @@ import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (Session)
 import Effect.Handler.AtCoder.Http.Client
   ( GET (GET),
-    HttpClient,
     NoReqBody (..),
     POST (POST),
     ReqBodyUrlEnc (..),
@@ -24,6 +23,7 @@ import Effect.Handler.AtCoder.Http.Client
     Url,
     bsResponse,
     https,
+    runSession,
     (/:),
     (=:),
   )
@@ -34,7 +34,7 @@ import Essential hiding (lift)
 
 run ::
   forall effs a.
-  (IO.HasEff effs) =>
+  IO.HasEff effs =>
   Session ->
   Eff (AtCoder.NamedEff ': effs) a ->
   Eff effs a
@@ -42,17 +42,17 @@ run initSession effs = peelEff0 pure interpret effs
   where
     interpret :: forall r. AtCoder.AnonEff r -> (r -> Eff effs a) -> Eff effs a
     interpret (CreateSession userName userPassword) k = do
-      session <- IO.lift $ retractEff $ HttpClient.runSession initSession $ createSession userName userPassword
+      session <- IO.lift $ retractEff $ flip evalStateDef initSession $ createSession userName userPassword
       k session
     interpret (GetContest contestId) k = do
-      contest <- IO.lift $ retractEff $ HttpClient.runSession initSession $ getContest contestId
+      contest <- IO.lift $ retractEff $ flip evalStateDef initSession $ getContest contestId
       k contest
 
 -- AtCoder endpoint
 endpoint :: Url 'Https
 endpoint = https "atcoder.jp"
 
-createSession :: UserName -> UserPassword -> HttpClient Session
+createSession :: UserName -> UserPassword -> Eff [StateDef Session, IO.NamedEff] Session
 createSession (UserName userName) (UserPassword userPassword) = do
   let loginEndpoint = endpoint /: "login"
 
@@ -83,7 +83,7 @@ createSession (UserName userName) (UserPassword userPassword) = do
     then get
     else liftIO $ throw $ AtCoderException "Username or Password is incorrect."
 
-getContest :: ContestId -> HttpClient Contest
+getContest :: ContestId -> Eff [StateDef Session, IO.NamedEff] Contest
 getContest (ContestId contestId) = do
   let tasksEndpoint = endpoint /: "contests" /: contestId /: "tasks"
 
