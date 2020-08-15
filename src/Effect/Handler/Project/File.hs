@@ -1,6 +1,5 @@
 module Effect.Handler.Project.File (run) where
 
-import Data.Extensible.Effect
 import Data.Text.IO as T
 import qualified Data.Text.Lazy as LT
 import DomainObject.Contest (Contest (..))
@@ -10,7 +9,7 @@ import DomainObject.TaskId (TaskId (..))
 import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.Project (Project (..))
 import qualified Effect.Adapter.Project as Project
-import Essential hiding (lift)
+import Essential
 import System.Directory
   ( XdgDirectory (XdgCache),
     createDirectory,

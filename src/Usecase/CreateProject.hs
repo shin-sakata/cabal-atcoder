@@ -4,7 +4,7 @@ import DomainObject.Contest (Contest, ContestId)
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 import qualified Effect.Adapter.Project as Project
-import Usecase.Imports
+import Essential
 
 createProject ::
   ( AtCoder.HasEff effs,

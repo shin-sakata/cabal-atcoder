@@ -6,12 +6,9 @@ module Effect.Handler.AtCoder.Http.Client
 where
 
 import Control.Monad.State (get, put)
-import Data.Extensible (type (>:))
-import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
-import Data.Extensible.Effect.Default
 import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (Session)
-import Essential hiding (lift)
+import Essential
 import qualified Network.HTTP.Client as L
 import Network.HTTP.Req
   ( GET (GET),

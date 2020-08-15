@@ -1,7 +1,7 @@
 module Effect.Handler.SessionRepository.Pure (run) where
 
-import Data.Extensible.Effect
 import Effect.Adapter.SessionRepository (SessionRepository (..))
+import Essential
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 
 run ::

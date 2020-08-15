@@ -1,9 +1,6 @@
 module Effect.Handler.AtCoder.Http where
 
 import Control.Monad.State (get)
-import Data.Extensible (type (>:))
-import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
-import Data.Extensible.Effect.Default
 import qualified Data.Text as T
 import DomainObject.Contest (Contest (..), ContestId (..))
 import DomainObject.TaskId (TaskId (..))
@@ -30,7 +27,7 @@ import Effect.Handler.AtCoder.Http.Client
 import qualified Effect.Handler.AtCoder.Http.Client as HttpClient
 import Effect.Handler.AtCoder.Http.Scrape (Html (Html))
 import qualified Effect.Handler.AtCoder.Http.Scrape as Scrape
-import Essential hiding (lift)
+import Essential
 
 run ::
   forall effs a.

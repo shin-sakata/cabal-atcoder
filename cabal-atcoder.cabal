@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 73058187a02bf4b3304df1007ff8f22a38c6b084580dd47fcc191585c5d56dc6
+-- hash: 38b5e0d3b24a3283788142e7e2cfb7460e68d194b9b8afe1ce560233f0865c37
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -48,7 +48,6 @@ library
       Effect.Handler.SessionRepository.File
       Essential
       Usecase.CreateProject
-      Usecase.Imports
       Usecase.Login
       Usecase.Logout
       Usecase.SubmitTaskAnswer

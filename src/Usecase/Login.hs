@@ -4,7 +4,7 @@ import DomainObject.UserName (UserName)
 import DomainObject.UserPassword (UserPassword)
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.SessionRepository as SessionRepository
-import Usecase.Imports
+import Essential
 
 login ::
   (AtCoder.HasEff effs, SessionRepository.HasEff effs) =>
