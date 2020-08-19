@@ -14,7 +14,7 @@ import Data.Extensible
 import Data.Extensible.Effect
 import Data.Proxy (Proxy (Proxy))
 import Essential hiding (lift)
-import DomainObject.Contest (Contest)
+import Domain.Object.Contest (Contest)
 
 data Project a where
   CreateProject :: Contest -> Project ()

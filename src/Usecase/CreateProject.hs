@@ -1,6 +1,7 @@
 module Usecase.CreateProject where
 
-import DomainObject.Contest (Contest, ContestId)
+import Domain.Object.Contest (Contest)
+import Domain.Object.ContestId (ContestId)
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 import qualified Effect.Adapter.Project as Project

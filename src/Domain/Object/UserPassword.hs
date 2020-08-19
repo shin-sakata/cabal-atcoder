@@ -1,4 +1,4 @@
-module DomainObject.UserPassword where
+module Domain.Object.UserPassword where
 
 import Essential
 

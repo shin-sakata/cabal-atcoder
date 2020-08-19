@@ -1,4 +1,4 @@
-module DomainObject.Status where
+module Domain.Object.Status where
 
 import Essential
 

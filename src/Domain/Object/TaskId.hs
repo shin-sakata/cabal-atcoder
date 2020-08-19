@@ -1,4 +1,4 @@
-module DomainObject.TaskId (TaskId (..), fromText) where
+module Domain.Object.TaskId (TaskId (..), fromText) where
 
 import Essential
 import qualified Data.Text as T

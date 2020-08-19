@@ -3,10 +3,10 @@ module Effect.Handler.Project.File (run) where
 import Data.Extensible.Effect
 import Data.Text.IO as T
 import qualified Data.Text.Lazy as LT
-import DomainObject.Contest (Contest (..))
-import qualified DomainObject.Contest as Contest
-import DomainObject.Contest.ContestId (ContestId (..))
-import DomainObject.TaskId (TaskId (..))
+import Domain.Object.Contest (Contest (..))
+import qualified Domain.Object.Contest as Contest
+import Domain.Object.ContestId (ContestId (..))
+import Domain.Object.TaskId (TaskId (..))
 import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.Project (Project (..))
 import qualified Effect.Adapter.Project as Project

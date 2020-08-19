@@ -1,4 +1,4 @@
-module DomainObject.UserName where
+module Domain.Object.UserName where
 
 import Essential
 import Data.String (IsString)

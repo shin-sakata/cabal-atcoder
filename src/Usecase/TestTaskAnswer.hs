@@ -1,7 +1,7 @@
 module Usecase.TestTaskAnswer where
 
-import DomainObject.TaskAnswer (TaskAnswer)
-import DomainObject.Status (Status)
+import Domain.Object.TaskAnswer (TaskAnswer)
+import Domain.Object.Status (Status)
 import Usecase.Imports
 
 testTaskAnswer :: MonadIO m => TaskAnswer -> m Status

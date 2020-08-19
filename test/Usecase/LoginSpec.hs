@@ -1,8 +1,8 @@
 module Usecase.LoginSpec where
 
 import Data.Extensible.Effect
-import DomainObject.UserName (UserName (UserName))
-import DomainObject.UserPassword (UserPassword (UserPassword))
+import Domain.Object.UserName (UserName (UserName))
+import Domain.Object.UserPassword (UserPassword (UserPassword))
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.SessionRepository as Session
 import qualified Effect.Handler.AtCoder.Pure as PureAtCoder

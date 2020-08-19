@@ -5,11 +5,12 @@ import Data.Extensible (type (>:))
 import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
 import Data.Extensible.Effect.Default
 import qualified Data.Text as T
-import DomainObject.Contest (Contest (..), ContestId (..))
-import DomainObject.TaskId (TaskId (..))
-import qualified DomainObject.TaskId as TaskId
-import DomainObject.UserName (UserName (UserName))
-import DomainObject.UserPassword (UserPassword (UserPassword))
+import Domain.Object.Contest (Contest (..))
+import Domain.Object.ContestId (ContestId (..))
+import Domain.Object.TaskId (TaskId (..))
+import qualified Domain.Object.TaskId as TaskId
+import Domain.Object.UserName (UserName (UserName))
+import Domain.Object.UserPassword (UserPassword (UserPassword))
 import Effect.Adapter.AtCoder (AtCoder (..))
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.IO as IO

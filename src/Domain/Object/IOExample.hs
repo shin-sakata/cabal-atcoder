@@ -1,4 +1,4 @@
-module DomainObject.Task.IOExample where
+module Domain.Object.IOExample where
 
 import Essential
 

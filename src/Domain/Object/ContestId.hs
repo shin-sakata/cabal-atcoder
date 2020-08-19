@@ -1,4 +1,4 @@
-module DomainObject.Contest.ContestId (ContestId (..)) where
+module Domain.Object.ContestId (ContestId (..)) where
 
 import Essential
 

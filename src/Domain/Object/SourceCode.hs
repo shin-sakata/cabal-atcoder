@@ -1,4 +1,4 @@
-module DomainObject.TaskAnswer.SourceCode where
+module Domain.Object.SourceCode where
 
 import GHC.Exts (IsString)
 import Essential

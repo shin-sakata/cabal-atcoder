@@ -3,7 +3,7 @@ module UserInterface.Cli.New (new) where
 import Data.Extensible
 import Data.Extensible.Effect
 import Data.Text.IO as T
-import DomainObject.Contest (ContestId (..))
+import Domain.Object.ContestId (ContestId (..))
 import qualified Effect.Adapter.AtCoder as AtCoder
 import qualified Effect.Adapter.IO as IO
 import qualified Effect.Adapter.Project as Project
