@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 81d3a007f2c3b6f6234bcb19705d5dcfe16a16c7c348f0aa8a1f0f888a4baa5f
+-- hash: 341794ae6479abbf163e3c372777fd5a6b9c6530d77da5ae177a5b96d80c391f
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -30,6 +30,7 @@ library
       Domain.Object.Contest
       Domain.Object.ContestId
       Domain.Object.IOExample
+      Domain.Object.Project
       Domain.Object.SourceCode
       Domain.Object.Status
       Domain.Object.Task
@@ -60,7 +61,7 @@ library
       Paths_cabal_atcoder
   hs-source-dirs:
       src
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes NoImplicitPrelude
   build-depends:
       base >=4.7 && <5
     , blaze-markup
@@ -90,7 +91,7 @@ executable cabal-atcoder
       Paths_cabal_atcoder
   hs-source-dirs:
       app
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes NoImplicitPrelude
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
@@ -126,7 +127,7 @@ test-suite cabal-atcoder-test
       Paths_cabal_atcoder
   hs-source-dirs:
       test
-  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes
+  default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes NoImplicitPrelude
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5

@@ -15,4 +15,5 @@ createProject ::
   Eff effs ()
 createProject contestId = do
   contest <- AtCoder.getContest contestId
-  Project.createProject contest
+  project <- Project.buildProject contest
+  Project.writeProject project
