@@ -10,15 +10,13 @@ module Effect.Adapter.AtCoder
   )
 where
 
-import Data.Extensible
-import Data.Extensible.Effect
 import Data.Proxy (Proxy (Proxy))
 import Domain.Object.Contest (Contest)
 import Domain.Object.ContestId (ContestId)
 import Domain.Object.UserName (UserName)
 import Domain.Object.UserPassword (UserPassword)
 import Effect.Adapter.SessionRepository (Session)
-import Essential hiding (lift)
+import Essential
 import Network.HTTP.Client (CookieJar)
 
 data AtCoder a where

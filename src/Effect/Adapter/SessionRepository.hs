@@ -12,10 +12,7 @@ module Effect.Adapter.SessionRepository
   )
 where
 
-import Data.Extensible
-import Data.Extensible.Effect
-import Data.Proxy (Proxy (Proxy))
-import Essential hiding (lift)
+import Essential
 import Network.HTTP.Client (CookieJar)
 
 type Session = CookieJar

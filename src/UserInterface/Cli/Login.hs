@@ -1,7 +1,5 @@
 module UserInterface.Cli.Login (login) where
 
-import Data.Extensible
-import Data.Extensible.Effect
 import Data.Text.IO as T
 import Domain.Object.UserName (UserName (UserName))
 import Domain.Object.UserPassword (UserPassword (UserPassword))

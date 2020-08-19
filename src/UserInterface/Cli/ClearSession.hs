@@ -1,7 +1,5 @@
 module UserInterface.Cli.ClearSession (clearSession) where
 
-import Data.Extensible
-import Data.Extensible.Effect
 import qualified Effect.Adapter.IO as IO
 import qualified Effect.Adapter.SessionRepository as Session
 import Essential

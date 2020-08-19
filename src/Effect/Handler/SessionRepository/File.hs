@@ -1,10 +1,9 @@
 module Effect.Handler.SessionRepository.File (run) where
 
-import Data.Extensible.Effect
 import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (SessionRepository (..))
 import qualified Effect.Adapter.SessionRepository as SessionRepository
-import Essential hiding (lift)
+import Essential
 import System.Directory
   ( XdgDirectory (XdgCache),
     createDirectory,

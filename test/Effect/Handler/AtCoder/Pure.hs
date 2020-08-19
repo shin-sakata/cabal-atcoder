@@ -1,9 +1,9 @@
 module Effect.Handler.AtCoder.Pure where
 
-import Data.Extensible.Effect (Eff, peelEff0)
 import Effect.Adapter.AtCoder (AtCoder (..))
 import qualified Effect.Adapter.AtCoder as AtCoder
 import Effect.Adapter.SessionRepository (Session)
+import Essential
 
 run ::
   forall effs a.

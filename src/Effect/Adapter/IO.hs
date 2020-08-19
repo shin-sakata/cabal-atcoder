@@ -7,10 +7,7 @@ module Effect.Adapter.IO
   )
 where
 
-import Data.Extensible
-import Data.Extensible.Effect
-import Data.Proxy (Proxy (Proxy))
-import Essential hiding (lift)
+import Essential
 
 type EffName = "IO"
 

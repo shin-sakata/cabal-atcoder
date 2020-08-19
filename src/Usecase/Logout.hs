@@ -1,6 +1,6 @@
 module Usecase.Logout (logout) where
 
-import Usecase.Imports
+import Essential
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 
 logout :: SessionRepository.HasEff effs => Eff effs ()

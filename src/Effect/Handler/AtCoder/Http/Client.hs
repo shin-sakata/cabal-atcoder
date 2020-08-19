@@ -1,17 +1,14 @@
 module Effect.Handler.AtCoder.Http.Client
   ( reqWithSession,
     runSession,
-    HttpClient,
     module Req,
   )
 where
 
 import Control.Monad.State (get, put)
-import Data.Extensible (type (>:))
-import Data.Extensible.Effect (Eff, leaveEff, peelEff0, retractEff)
-import Data.Extensible.Effect.Default
+import qualified Effect.Adapter.IO as IO
 import Effect.Adapter.SessionRepository (Session)
-import Essential hiding (lift)
+import Essential
 import qualified Network.HTTP.Client as L
 import Network.HTTP.Req
   ( GET (GET),
@@ -29,11 +26,9 @@ import Network.HTTP.Req
     (/:),
     (=:),
   )
-import qualified Network.HTTP.Types as T
 import qualified Network.HTTP.Req as Req
+import qualified Network.HTTP.Types as T
 import Network.HTTP.Types.Status (status404)
-
-type HttpClient = Eff '[StateDef Session, "IO" >: IO]
 
 runSession :: s -> Eff (StateDef s : xs) a -> Eff xs a
 runSession session = flip evalStateDef session
@@ -49,19 +44,18 @@ reqWithSession ::
   body ->
   Proxy response ->
   Option scheme ->
-  HttpClient response
+  Eff '[StateDef Session, IO.NamedEff] response
 reqWithSession method url body responseType option = do
   cookie <- get
 
   r <-
-    ( liftIO $
-        Req.runReq Req.defaultHttpConfig {Req.httpConfigCheckResponse = httpConfigCheckResponse} $
-          Req.req
-            method
-            url
-            body
-            responseType
-            (option <> Req.cookieJar cookie)
+    ( Req.runReq Req.defaultHttpConfig {Req.httpConfigCheckResponse = httpConfigCheckResponse} $
+        Req.req
+          method
+          url
+          body
+          responseType
+          (option <> Req.cookieJar cookie)
       )
 
   put (Req.responseCookieJar r)

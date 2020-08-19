@@ -10,10 +10,7 @@ module Effect.Adapter.Project
   )
 where
 
-import Data.Extensible
-import Data.Extensible.Effect
-import Data.Proxy (Proxy (Proxy))
-import Essential hiding (lift)
+import Essential
 import Domain.Object.Contest (Contest)
 
 data Project a where

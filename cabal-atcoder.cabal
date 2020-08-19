@@ -48,7 +48,6 @@ library
       Effect.Handler.SessionRepository.File
       Essential
       Usecase.CreateProject
-      Usecase.Imports
       Usecase.Login
       Usecase.Logout
       Usecase.SubmitTaskAnswer
