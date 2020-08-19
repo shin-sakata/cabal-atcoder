@@ -12,6 +12,8 @@ import Data.Proxy as Expose (Proxy (Proxy))
 import Data.String.Conversions as Expose (convertString)
 import Data.Text as Expose (Text)
 import Text.Shakespeare.Text as Expose (st)
+import Prelude as Expose hiding (FilePath, (</>))
+import System.FilePath as Expose (FilePath, (</>))
 
 maybeToMonadThrow :: (MonadThrow m, Exception e) => e -> Maybe a -> m a
 maybeToMonadThrow e = throw e `maybe` return

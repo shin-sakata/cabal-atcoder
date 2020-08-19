@@ -11,7 +11,6 @@ import System.Directory
     getXdgDirectory,
   )
 import System.Environment (getEnv)
-import System.FilePath ((</>))
 import Text.Read (readMaybe)
 
 run ::

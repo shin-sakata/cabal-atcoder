@@ -16,7 +16,6 @@ import System.Directory
     doesDirectoryExist,
   )
 import System.Environment (getEnv)
-import System.FilePath ((</>))
 import Text.Blaze (Markup)
 import Text.Blaze.Renderer.Text (renderMarkup)
 import Text.Heterocephalus (compileTextFile)
