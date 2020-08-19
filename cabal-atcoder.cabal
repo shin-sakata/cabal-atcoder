@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 341794ae6479abbf163e3c372777fd5a6b9c6530d77da5ae177a5b96d80c391f
+-- hash: d858bbbf3cadcdfe33a7bff920b029876cc7f8f3f57a2d1e99b976f9842011a6
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -64,13 +64,11 @@ library
   default-extensions: ConstraintKinds DataKinds ExplicitForAll ExplicitNamespaces FlexibleContexts GADTs PackageImports TypeOperators GeneralizedNewtypeDeriving DerivingStrategies OverloadedLabels TypeApplications ExplicitForAll ScopedTypeVariables OverloadedStrings BlockArguments RecordWildCards TemplateHaskell QuasiQuotes NoImplicitPrelude
   build-depends:
       base >=4.7 && <5
-    , blaze-markup
     , bytestring
     , directory
     , extensible
     , extensible-skeleton
     , filepath
-    , heterocephalus
     , http-client
     , http-types
     , membership
@@ -95,14 +93,12 @@ executable cabal-atcoder
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , blaze-markup
     , bytestring
     , cabal-atcoder
     , directory
     , extensible
     , extensible-skeleton
     , filepath
-    , heterocephalus
     , http-client
     , http-types
     , membership
@@ -131,14 +127,12 @@ test-suite cabal-atcoder-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , blaze-markup
     , bytestring
     , cabal-atcoder
     , directory
     , extensible
     , extensible-skeleton
     , filepath
-    , heterocephalus
     , hspec
     , http-client
     , http-types

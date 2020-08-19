@@ -35,8 +35,6 @@ dependencies:
   - optparse-applicative
   - directory
   - filepath
-  - heterocephalus
-  - blaze-markup
   - template-haskell
   - http-types
   - shakespeare
