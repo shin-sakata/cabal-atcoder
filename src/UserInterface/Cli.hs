@@ -1,5 +1,6 @@
 module UserInterface.Cli where
 
+import Config.App (App)
 import qualified Data.Text.IO as T
 import Essential
 import Options.Applicative
@@ -42,13 +43,14 @@ parseInfo = parseCommand `withInfo` usage
 usage :: String
 usage = "stack atcoder [--help] [COMMAND]"
 
-execCommand :: RIO env ()
+execCommand :: RIO App ()
 execCommand =
   do
+    logInfoS "infooo" "info"
     command <- liftIO $ execParser parseInfo
     run command
   where
-    run :: Command -> RIO env ()
+    run :: Command -> RIO App ()
     run cmd = case cmd of
       Login -> login
       New contestId -> new contestId
