@@ -1,3 +1,14 @@
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE UndecidableInstances #-}
+
 module Effect.Adapter.RIO
   ( AnonEff,
     EffName,
@@ -11,11 +22,11 @@ import Essential
 
 type EffName = "IO"
 
-type AnonEff = IO
+type AnonEff = RIO
 
-type NamedEff = EffName >: AnonEff
+type NamedEff env = EffName >: AnonEff env
 
-type HasEff effs = Lookup effs EffName IO
+type HasEff env effs = Lookup effs EffName (RIO env)
 
-lift :: forall effs a. HasEff effs => IO a -> Eff effs a
+lift :: forall env effs a. HasEff env effs => RIO env a -> Eff effs a
 lift = liftEff (Proxy @EffName)

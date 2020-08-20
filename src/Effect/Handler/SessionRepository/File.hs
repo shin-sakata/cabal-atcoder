@@ -1,6 +1,6 @@
 module Effect.Handler.SessionRepository.File (run) where
 
-import qualified Effect.Adapter.IO as IO
+import qualified Effect.Adapter.RIO as RIO
 import Effect.Adapter.SessionRepository (SessionRepository (..))
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 import Essential
@@ -14,34 +14,34 @@ import System.Environment (getEnv)
 import Text.Read (readMaybe)
 
 run ::
-  forall effs a.
-  IO.HasEff effs =>
+  forall env effs a.
+  RIO.HasEff env effs =>
   Eff (SessionRepository.NamedEff ': effs) a ->
   Eff effs a
 run effs = peelEff0 pure interpret effs
   where
     interpret :: forall r. SessionRepository.AnonEff r -> (r -> Eff effs a) -> Eff effs a
     interpret Remove k = do
-      IO.lift removeSession
+      RIO.lift removeSession
       k ()
     interpret Get k = do
-      session <- IO.lift getSession
+      session <- RIO.lift getSession
       k session
     interpret (Store session) k = do
-      IO.lift $ storeSession session
+      RIO.lift $ storeSession session
       k ()
 
-removeSession :: IO ()
+removeSession :: RIO env ()
 removeSession = storeSession mempty
 
-storeSession :: SessionRepository.Session -> IO ()
+storeSession :: SessionRepository.Session -> RIO env ()
 storeSession session = do
-  sessionPath <- getSessionPath
+  sessionPath <- liftIO $ getSessionPath
   writeFileUtf8 sessionPath $ convertString $ show session
 
-getSession :: IO SessionRepository.Session
+getSession :: RIO env SessionRepository.Session
 getSession = do
-  sessionPath <- getSessionPath
+  sessionPath <- liftIO $ getSessionPath
   sessionUtf8 <- readFileUtf8 sessionPath
   case readMaybe $ convertString sessionUtf8 of
     Just session -> pure session

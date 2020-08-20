@@ -1,13 +1,13 @@
 module UserInterface.Cli.ClearSession (clearSession) where
 
-import qualified Effect.Adapter.IO as IO
+import qualified Effect.Adapter.RIO as RIO
 import qualified Effect.Adapter.SessionRepository as Session
-import Essential
 import qualified Effect.Handler.SessionRepository.File as FileSession
+import Essential
 import Usecase.Logout (logout)
 
-clearSession :: IO ()
+clearSession :: RIO env ()
 clearSession = runLogout logout
 
-runLogout :: Eff '[Session.NamedEff, IO.NamedEff] a -> IO a
+runLogout :: Eff '[Session.NamedEff, RIO.NamedEff env] a -> RIO env a
 runLogout = retractEff . FileSession.run

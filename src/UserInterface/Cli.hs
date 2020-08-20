@@ -42,13 +42,13 @@ parseInfo = parseCommand `withInfo` usage
 usage :: String
 usage = "stack atcoder [--help] [COMMAND]"
 
-execCommand :: IO ()
+execCommand :: RIO env ()
 execCommand =
   do
     command <- liftIO $ execParser parseInfo
     run command
   where
-    run :: Command -> IO ()
+    run :: Command -> RIO env ()
     run cmd = case cmd of
       Login -> login
       New contestId -> new contestId

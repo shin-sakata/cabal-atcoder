@@ -6,7 +6,7 @@ module Effect.Handler.AtCoder.Http.Client
 where
 
 import Control.Monad.State (get, put)
-import qualified Effect.Adapter.IO as IO
+import qualified Effect.Adapter.RIO as RIO
 import Effect.Adapter.SessionRepository (Session)
 import Essential
 import qualified Network.HTTP.Client as L
@@ -44,19 +44,18 @@ reqWithSession ::
   body ->
   Proxy response ->
   Option scheme ->
-  Eff '[StateDef Session, IO.NamedEff] response
+  Eff '[StateDef Session, RIO.NamedEff env] response
 reqWithSession method url body responseType option = do
   cookie <- get
 
   r <-
-    ( Req.runReq Req.defaultHttpConfig {Req.httpConfigCheckResponse = httpConfigCheckResponse} $
-        Req.req
-          method
-          url
-          body
-          responseType
-          (option <> Req.cookieJar cookie)
-      )
+    Req.runReq Req.defaultHttpConfig {Req.httpConfigCheckResponse = httpConfigCheckResponse} $
+      Req.req
+        method
+        url
+        body
+        responseType
+        (option <> Req.cookieJar cookie)
 
   put (Req.responseCookieJar r)
   return r

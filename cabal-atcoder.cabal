@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b26fbcf2464d141430fea1905234628baeed571f895c3f1c788e2fc43a2aea0a
+-- hash: 5315c2fb7497bb34e98b95067d2074456e44dcc783e8a3da5e35fdb155c271c7
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Config.App
       Domain.Object.Contest
       Domain.Object.ContestId
       Domain.Object.IOExample
@@ -39,7 +40,6 @@ library
       Domain.Object.UserName
       Domain.Object.UserPassword
       Effect.Adapter.AtCoder
-      Effect.Adapter.IO
       Effect.Adapter.Project
       Effect.Adapter.RIO
       Effect.Adapter.SessionRepository

@@ -1,7 +1,11 @@
 module Main where
 
-import UserInterface.Cli
+import Config.App
 import Essential
+import UserInterface.Cli
 
 main :: IO ()
-main = execCommand
+main = runRIO app execCommand
+
+app :: App
+app = App

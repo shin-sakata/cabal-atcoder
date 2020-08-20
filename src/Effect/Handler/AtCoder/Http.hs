@@ -10,7 +10,7 @@ import Domain.Object.UserName (UserName (UserName))
 import Domain.Object.UserPassword (UserPassword (UserPassword))
 import Effect.Adapter.AtCoder (AtCoder (..))
 import qualified Effect.Adapter.AtCoder as AtCoder
-import qualified Effect.Adapter.IO as IO
+import qualified Effect.Adapter.RIO as RIO
 import Effect.Adapter.SessionRepository (Session)
 import Effect.Handler.AtCoder.Http.Client
   ( GET (GET),
@@ -31,8 +31,8 @@ import qualified Effect.Handler.AtCoder.Http.Scrape as Scrape
 import Essential
 
 run ::
-  forall effs a.
-  IO.HasEff effs =>
+  forall env effs a.
+  RIO.HasEff env effs =>
   Session ->
   Eff (AtCoder.NamedEff ': effs) a ->
   Eff effs a
@@ -40,17 +40,17 @@ run initSession effs = peelEff0 pure interpret effs
   where
     interpret :: forall r. AtCoder.AnonEff r -> (r -> Eff effs a) -> Eff effs a
     interpret (CreateSession userName userPassword) k = do
-      session <- IO.lift $ retractEff $ flip evalStateDef initSession $ createSession userName userPassword
+      session <- RIO.lift $ retractEff $ flip evalStateDef initSession $ createSession userName userPassword
       k session
     interpret (GetContest contestId) k = do
-      contest <- IO.lift $ retractEff $ flip evalStateDef initSession $ getContest contestId
+      contest <- RIO.lift $ retractEff $ flip evalStateDef initSession $ getContest contestId
       k contest
 
 -- AtCoder endpoint
 endpoint :: Url 'Https
 endpoint = https "atcoder.jp"
 
-createSession :: UserName -> UserPassword -> Eff [StateDef Session, IO.NamedEff] Session
+createSession :: UserName -> UserPassword -> Eff [StateDef Session, RIO.NamedEff env] Session
 createSession (UserName userName) (UserPassword userPassword) = do
   let loginEndpoint = endpoint /: "login"
 
@@ -64,7 +64,7 @@ createSession (UserName userName) (UserPassword userPassword) = do
 
   let loginPageHtml = Html $ convertString $ HttpClient.responseBody $ r
 
-  csrfToken <- liftIO $ Scrape.extractCsrfToken loginPageHtml
+  csrfToken <- Scrape.extractCsrfToken loginPageHtml
 
   let body =
         ReqBodyUrlEnc $
@@ -79,9 +79,9 @@ createSession (UserName userName) (UserPassword userPassword) = do
 
   if Scrape.hasSuccess $ Html $ convertString $ HttpClient.responseBody r
     then get
-    else liftIO $ throwM $ AtCoderException "Username or Password is incorrect."
+    else throwM $ AtCoderException "Username or Password is incorrect."
 
-getContest :: ContestId -> Eff [StateDef Session, IO.NamedEff] Contest
+getContest :: ContestId -> Eff [StateDef Session, RIO.NamedEff env] Contest
 getContest (ContestId contestId) = do
   let tasksEndpoint = endpoint /: "contests" /: contestId /: "tasks"
 
@@ -100,7 +100,7 @@ getContest (ContestId contestId) = do
 
   let tasksDocument = Html $ convertString $ HttpClient.responseBody r
 
-  tasks <- map TaskId.fromText <$> Scrape.extractTasks tasksDocument
+  tasks <- map TaskId.fromText <$> (Scrape.extractTasks tasksDocument)
 
   let contest =
         Contest
