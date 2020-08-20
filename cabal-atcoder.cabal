@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d858bbbf3cadcdfe33a7bff920b029876cc7f8f3f57a2d1e99b976f9842011a6
+-- hash: b26fbcf2464d141430fea1905234628baeed571f895c3f1c788e2fc43a2aea0a
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -41,6 +41,7 @@ library
       Effect.Adapter.AtCoder
       Effect.Adapter.IO
       Effect.Adapter.Project
+      Effect.Adapter.RIO
       Effect.Adapter.SessionRepository
       Effect.Handler.AtCoder.Http
       Effect.Handler.AtCoder.Http.Client
@@ -75,6 +76,7 @@ library
     , mtl
     , optparse-applicative
     , req
+    , rio
     , safe-exceptions
     , scalpel
     , shakespeare
@@ -105,6 +107,7 @@ executable cabal-atcoder
     , mtl
     , optparse-applicative
     , req
+    , rio
     , safe-exceptions
     , scalpel
     , shakespeare
@@ -140,6 +143,7 @@ test-suite cabal-atcoder-test
     , mtl
     , optparse-applicative
     , req
+    , rio
     , safe-exceptions
     , scalpel
     , shakespeare

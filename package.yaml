@@ -38,6 +38,7 @@ dependencies:
   - template-haskell
   - http-types
   - shakespeare
+  - rio
 
 default-extensions:
   - ConstraintKinds

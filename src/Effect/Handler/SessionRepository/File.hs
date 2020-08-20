@@ -37,13 +37,13 @@ removeSession = storeSession mempty
 storeSession :: SessionRepository.Session -> IO ()
 storeSession session = do
   sessionPath <- getSessionPath
-  writeFile sessionPath $ show session
+  writeFileUtf8 sessionPath $ convertString $ show session
 
 getSession :: IO SessionRepository.Session
 getSession = do
   sessionPath <- getSessionPath
-  sessionUtf8 <- readFile sessionPath
-  case readMaybe $ sessionUtf8 of
+  sessionUtf8 <- readFileUtf8 sessionPath
+  case readMaybe $ convertString sessionUtf8 of
     Just session -> pure session
     Nothing -> throwString "The session file is corrupted."
 

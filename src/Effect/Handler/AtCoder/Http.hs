@@ -79,7 +79,7 @@ createSession (UserName userName) (UserPassword userPassword) = do
 
   if Scrape.hasSuccess $ Html $ convertString $ HttpClient.responseBody r
     then get
-    else liftIO $ throw $ AtCoderException "Username or Password is incorrect."
+    else liftIO $ throwM $ AtCoderException "Username or Password is incorrect."
 
 getContest :: ContestId -> Eff [StateDef Session, IO.NamedEff] Contest
 getContest (ContestId contestId) = do
@@ -96,7 +96,7 @@ getContest (ContestId contestId) = do
   -- 404だった場合は入力が違うためエラー
   when
     (HttpClient.responseStatusCode r == 404)
-    (throw $ AtCoderException [st|Contest not found. Contest id: #{contestId}|])
+    (throwM $ AtCoderException [st|Contest not found. Contest id: #{contestId}|])
 
   let tasksDocument = Html $ convertString $ HttpClient.responseBody r
 
