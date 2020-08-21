@@ -46,7 +46,6 @@ usage = "stack atcoder [--help] [COMMAND]"
 execCommand :: RIO App ()
 execCommand =
   do
-    logInfoS "infooo" "info"
     command <- liftIO $ execParser parseInfo
     run command
   where

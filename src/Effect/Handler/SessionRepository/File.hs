@@ -5,12 +5,6 @@ import Effect.Adapter.SessionRepository (SessionRepository (..))
 import qualified Effect.Adapter.SessionRepository as SessionRepository
 import qualified Effect.Handler.SessionRepository.File.Config as Config
 import Essential
-import System.Directory
-  ( XdgDirectory (XdgCache),
-    createDirectory,
-    doesDirectoryExist,
-    getXdgDirectory,
-  )
 import System.Environment (getEnv)
 import Text.Read (readMaybe)
 

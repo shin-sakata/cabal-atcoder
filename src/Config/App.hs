@@ -26,5 +26,9 @@ runApp exe = do
   logOptions' <- logOptionsHandle stderr False
   let logOptions = setLogUseTime True $ setLogUseLoc True logOptions'
   withLogFunc logOptions $ \logFunc -> do
-    let app = App {appLogFunc = logFunc, sessionFileConfig = sessionFileConfig}
+    let app =
+          App
+            { appLogFunc = logFunc,
+              sessionFileConfig = sessionFileConfig
+            }
     runRIO app exe

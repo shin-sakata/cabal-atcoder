@@ -11,11 +11,11 @@ where
 import Essential
 import RIO.Directory
   ( XdgDirectory (XdgCache),
-    createDirectory,
+    createDirectoryIfMissing,
     doesDirectoryExist,
     getXdgDirectory,
   )
-import System.Environment (getEnv)
+import System.Environment (lookupEnv)
 
 data Config = Config
   { sessionPath :: !FilePath
@@ -39,19 +39,13 @@ getSessionPath :: IO FilePath
 getSessionPath = do
   let sessionFileName = "session"
   cacheDir <- getCacheDir
-  initDir cacheDir
+  createDirectoryIfMissing True cacheDir
   pure $ cacheDir </> sessionFileName
   where
-    initDir :: FilePath -> IO ()
-    initDir dir = do
-      exists <- doesDirectoryExist dir
-      if exists
-        then pure ()
-        else createDirectory dir
-
     getCacheDir :: IO FilePath
     getCacheDir = do
-      cacheDir <- getEnv "CABAL_ATCODER_TEST_CACHE_DIR"
-      if null cacheDir
-        then getXdgDirectory XdgCache "cabal-atcoder"
-        else pure cacheDir
+      cacheDir <- lookupEnv "CABAL_ATCODER_TEST_CACHE_DIR"
+      case cacheDir of
+        Nothing -> getXdgDirectory XdgCache "cabal-atcoder"
+        Just "" -> getXdgDirectory XdgCache "cabal-atcoder"
+        Just dir -> pure dir
