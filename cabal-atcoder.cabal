@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8f1c5cb27ba311686834837bce785d6924d8863ee8f8f308b987a851f8dc9ef7
+-- hash: 1d82420a95a924fc5b7a61c4ce54a23522bf9272f2088def859d23d2923d688b
 
 name:           cabal-atcoder
 version:        0.1.0.0
@@ -47,6 +47,7 @@ library
       Effect.Handler.AtCoder.Http.Client
       Effect.Handler.AtCoder.Http.Scrape
       Effect.Handler.Project.File
+      Effect.Handler.Project.File.Config
       Effect.Handler.SessionRepository.File
       Effect.Handler.SessionRepository.File.Config
       Essential
